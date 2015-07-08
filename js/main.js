@@ -1,5 +1,3 @@
-
-
 $(document).ready(function () {
 
     $(".intro").show();
@@ -26,7 +24,6 @@ $(document).ready(function () {
     //       $(this).children('span').css('display', 'none');
     //       $(this).children('.thumb_slider').css('display', 'none');
     // });
-
 
     $(".next-btn-arrow").click(function(event){
       event.preventDefault();
@@ -187,7 +184,6 @@ $(document).ready(function () {
       $("body").css('background-color','#F2C245');
       $(".arrow_right, .arrow_right_last").hide();
     })
-
 
     if($(".first-q").hasClass("on")){
       $("body").css('background-color','#CE2432');

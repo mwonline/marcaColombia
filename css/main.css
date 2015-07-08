@@ -184,9 +184,27 @@ body{
     z-index: 3;
   }
 
-  a.next-btn-arrow{
+  .arrow_right_last{
+    position: absolute;
+    right: 30px;
+    top: 45%;
+    z-index: 3;
+  }
+
+  .hide_arrow{
+    display: none;
+  }
+
+  div.next-btn-arrow{
     font-size: 3em;
     color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+  }
+
+  div.next-btn-arrow_last{
+    font-size: 3em;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
   }
 
   section.intro{
@@ -238,6 +256,10 @@ body{
     font-size: 1.4em;
     border-radius: 10px !important;
     width: 400px;
+  }
+
+  input.error{
+    border-color: red !important;
   }
 
   a.generic-btn{

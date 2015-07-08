@@ -35,28 +35,41 @@ $(document).ready(function () {
       $(".main-header, .name-step").delay(400).fadeIn(1000);
       $("body").removeClass('yellow').addClass('blue');
       $(".url-co").removeClass('co-icon-blue').addClass('co-icon-yellow');
+      $(".arrow_right").addClass('hide_arrow');
+      $('.next-name').parent().removeClass('hide_arrow');
     })
 
-    $("#next-name").click(function(event){
-      event.preventDefault();
-      $(".name-step").fadeOut(100);
-      $(".name-step").removeClass('on');
-      $(".questions, .slidernav-top").show();
-      $(".first-q").addClass('on');
-      $(".first-q").fadeIn(1000);
-      $(".url-co").removeClass('co-icon-yellow').addClass('co-icon-blue');
-      $("body").css('background-color','#CE2432');
-      $(".slidernav-top ol").addClass('bg-red');
-      $(".oneli").addClass('actived');
-
-      if ($(".item-navtop").hasClass("actived")) {
-        $(".item-navtop.actived").children('span').css('display', 'inherit');
-        $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
+    $(".next-name").click(function(event){
+      var inputName = $("#name").val();
+      randomString();
+      $(".name").text(inputName);
+      if (inputName == '' || inputName == null) {
+        console.log('Ingrese su nombre !!');
+        $("#name").attr("placeholder", "Ingresa tu nombre");
+        $("#name").addClass("error");
+        return false;
       }
-
+      else{
+        event.preventDefault();
+        $(".name-step").fadeOut(100);
+        $(".name-step").removeClass('on');
+        $(".questions, .slidernav-top").show();
+        $(".first-q").addClass('on');
+        $(".first-q").fadeIn(1000);
+        $(".url-co").removeClass('co-icon-yellow').addClass('co-icon-blue');
+        $("body").css('background-color','#CE2432');
+        $(".slidernav-top ol").addClass('bg-red');
+        $(".oneli").addClass('actived');
+        if ($(".item-navtop").hasClass("actived")) {
+          $(".item-navtop.actived").children('span').css('display', 'inherit');
+          $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
+        }
+        $('.next-name').parent().addClass('hide_arrow');
+        $('.next-01').parent().removeClass('hide_arrow');
+      }
     })
 
-    $("#next-01").click(function(event){
+    $(".next-01").click(function(event){
       event.preventDefault();
       $(".first-q").fadeOut(100);
       $(".first-q").removeClass('on');
@@ -68,16 +81,16 @@ $(document).ready(function () {
       $(".oneli").removeClass('actived');
       $(".oneli .thumb_slider, .oneli span").hide();
       $(".twoli").addClass('actived');
-
       if ($(".item-navtop").hasClass("actived")) {
         $(".item-navtop.actived").children('span').css('display', 'inherit');
         $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
       }
-
+      $('.next-01').parent().addClass('hide_arrow');
+      $('.next-02').parent().removeClass('hide_arrow');
     })
 
 
-    $("#next-02").click(function(event){
+    $(".next-02").click(function(event){
       event.preventDefault();
       $(".second-q").fadeOut(100);
       $(".second-q").removeClass('on');
@@ -95,10 +108,11 @@ $(document).ready(function () {
         $(".item-navtop.actived").children('span').css('display', 'inherit');
         $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
       }
-
+      $('.next-02').parent().addClass('hide_arrow');
+      $('.next-03').parent().removeClass('hide_arrow');
     })
 
-    $("#next-03").click(function(event){
+    $(".next-03").click(function(event){
       event.preventDefault();
       $(".tirth-q").fadeOut(100);
       $(".tirth-q").removeClass('on');
@@ -116,10 +130,11 @@ $(document).ready(function () {
         $(".item-navtop.actived").children('span').css('display', 'inherit');
         $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
       }
-
+      $('.next-03').parent().addClass('hide_arrow');
+      $('.next-04').parent().removeClass('hide_arrow');
     })
 
-    $("#next-04").click(function(event){
+    $(".next-04").click(function(event){
       event.preventDefault();
       $(".fourth-q").fadeOut(100);
       $(".fourth-q").removeClass('on');
@@ -137,10 +152,11 @@ $(document).ready(function () {
         $(".item-navtop.actived").children('span').css('display', 'inherit');
         $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
       }
-
+      $('.next-04').parent().addClass('hide_arrow');
+      $('.next-05').parent().removeClass('hide_arrow');
     })
 
-    $("#next-05").click(function(event){
+    $(".next-05").click(function(event){
       event.preventDefault();
       $(".fifth-q").fadeOut(100);
       $(".fifth-q").removeClass('on');
@@ -158,16 +174,18 @@ $(document).ready(function () {
         $(".item-navtop.actived").children('span').css('display', 'inherit');
         $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
       }
+      $('.next-05').parent().addClass('hide_arrow');
+      $('.next-result').parent().removeClass('hide_arrow');
     })
 
-    $("#next-result").click(function(event){
+    $(".next-result").click(function(event){
       event.preventDefault();
       $(".sixth-q").fadeOut(100);
       $(".sixth-q").removeClass('on');
       $(".result").fadeIn(1000);
       $(".slidernav-top").hide();
       $("body").css('background-color','#F2C245');
-      $(".arrow_right").hide();
+      $(".arrow_right, .arrow_right_last").hide();
     })
 
 
@@ -208,5 +226,34 @@ $(document).ready(function () {
       $(".sixth-q").hide();
     }
 
+    $("#compartir_fb").click(function(){
+      $.ajax({
+        method: "POST",
+        url: "createImg.php",
+        data: { name: "John", location: "Boston" }
+      })
+        .done(function( msg ) {
+          alert( "Data Saved: " + msg );
+        });
+    })
+
 });
 
+function randomString(){
+  var b = 1;
+  var a = 3;
+  var aleatorio = Math.round(Math.random()*(b-a)+parseInt(a));
+  console.log(aleatorio);
+  if (aleatorio == 1) {
+    $(".msg-final").text('¡Son el complemento perfecto!');
+    $(".msg-second").text('Sigue alimentando ese amor todos los días. ');
+  }
+  if (aleatorio == 2) {
+    $(".msg-final").text('¡Son la combinación ideal!');
+    $(".msg-second").text('Tú y Colombia hacen un gran equipo juntos');
+  }
+  if (aleatorio == 3) {
+    $(".msg-final").text('¡Son el uno para el otro!');
+    $(".msg-second").text('Tú y COLOMBIA van juntos por buenas cosas.');
+  }
+}

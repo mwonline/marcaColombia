@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+  var inputName = '';
+
     $(".intro").show();
     $(".name-step, .result, .questions,.main-header").hide();
 
@@ -37,7 +39,7 @@ $(document).ready(function () {
     })
 
     $(".next-name").click(function(event){
-      var inputName = $("#name").val();
+      inputName = $("#name").val();
       randomString();
       $(".name").text(inputName);
       if (inputName == '' || inputName == null) {
@@ -223,16 +225,33 @@ $(document).ready(function () {
     }
 
     $("#compartir_fb").click(function(){
+
       $.ajax({
         method: "POST",
+        data: { nombre: inputName },
         url: "createImg.php",
-        data: { name: "John", location: "Boston" }
-      })
-        .done(function( msg ) {
-          alert( "Data Saved: " + msg );
-        });
-    })
+      }).done(function() {
+          // $(location).attr('href','');
+          window.open('https://www.facebook.com/sharer/sharer.php?u=http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
+      });
 
+    });
+
+
+    $("#compartir_tw").click(function(){
+
+      $.ajax({
+        method: "POST",
+        data: { nombre: inputName },
+        url: "createImg.php",
+      }).done(function() {
+          // $(location).attr('href','');
+          window.open('https://twitter.com/?status=Marca Colombia http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
+      });
+
+    });
+
+    
 });
 
 function randomString(){

@@ -42,8 +42,18 @@ $(document).ready(function () {
     $(".next-name").click(function(event){
       inputName = $("#name").val();
       var splitName = inputName.split(' ');
-      path_name = splitName[0].toLowerCase();
+      path_name = splitName[0];
+      path_name = path_name.toLowerCase();
       randomString();
+
+      $.ajax({
+        method: "POST",
+        data: { nombre: inputName },
+        url: "createImg.php",
+      }).done(function() {
+        console.log('creando Imagen');
+      });
+
       $(".name").text(inputName);
       if (inputName == '' || inputName == null) {
         console.log('Ingrese su nombre !!');
@@ -234,9 +244,20 @@ $(document).ready(function () {
         data: { nombre: inputName },
         url: "createImg.php",
       }).done(function() {
-          // $(location).attr('href','');
-          window.open('https://www.facebook.com/sharer/sharer.php?u=http://mwonline.com.co/marcaColombia/'+path_name+'.png');
-          // window.open('https://www.facebook.com/sharer/sharer.php?p[images][0]=http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
+          var width  = 575,
+                 height = 400,
+                 left   = ($(window).width()  - width)  / 2,
+                 top    = ($(window).height() - height) / 2,
+                 url = 'https://www.facebook.com/sharer/sharer.php?u=http://mwonline.com.co/marcaColombia/'+path_name+'.png&t=TEstTitulo',
+                 opts   = ',width='  + width  +
+                          ',height=' + height +
+                          ',top='    + top    +
+                          ',left='   + left;
+             
+             window.open(url, 'facebook', opts);
+          
+             return false;
+
       });
 
     });
@@ -250,7 +271,21 @@ $(document).ready(function () {
         url: "createImg.php",
       }).done(function() {
           // $(location).attr('href','');
-          window.open('https://twitter.com/?status=Marca Colombia http://mwonline.com.co/marcaColombia/'+path_name+'.png');
+          // window.open('https://twitter.com/?status= &#35;nunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png');
+          var width  = 575,
+                 height = 400,
+                 left   = ($(window).width()  - width)  / 2,
+                 top    = ($(window).height() - height) / 2,
+                 url    = 'https://twitter.com/?status=%23enunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png',
+                 opts   = ',width='  + width  +
+                          ',height=' + height +
+                          ',top='    + top    +
+                          ',left='   + left;
+             
+             window.open(url, 'twitter', opts);
+          
+             return false;
+
       });
 
     });

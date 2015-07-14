@@ -66,12 +66,12 @@
    case 2: $pixels_plus = 10; break;
    case 3: $pixels_plus = 9; break;
    case 4: $pixels_plus = 8; break;
-   case 5: $pixels_plus = 7.5; break;
+   case 5: $pixels_plus = 7; break;
    case 6: $pixels_plus = 7; break;
-   case 7: $pixels_plus = 6.5; break;
-   case 8: $pixels_plus = 6.5; break;
-   case 9: $pixels_plus = 6.5; break;
-   case 10: $pixels_plus = 6.5; break;
+   case 7: $pixels_plus = 7; break;
+   case 8: $pixels_plus = 7; break;
+   case 9: $pixels_plus = 7; break;
+   case 10: $pixels_plus = 5; break;
   }
 
   $x_length_name = $length_name * $pixels_plus; 
@@ -110,4 +110,5 @@
 
   // Destroy image in memory to free-up resources:
   imagedestroy($image);
+
 ?>

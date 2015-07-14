@@ -265,6 +265,8 @@ body{
   }
 
   a.generic-btn{
+    z-index: 999;
+    position: relative;
     background-color: rgba(27,54,109,0.3);
     color: #FFF;
     text-align: left;
@@ -929,14 +931,8 @@ body{
       }
 
     }
+    .sectionBtn{
+      z-index:999 !important;
+    }
 
 /*-----  End of media queries phonescreen 320px to 480px  ------*/
-
-
-
-
-
-
-
-
-

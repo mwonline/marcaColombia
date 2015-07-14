@@ -1,11 +1,11 @@
 <?php # Script 1
    $nombre = $_POST["nombre"];
    $nombreExplode = explode(" ", $nombre);
-   $nombre = $nombreExplode[0];
+   $nombre_imagen = strtolower($nombreExplode[0]);
+   $nombre = ucfirst(strtolower($nombreExplode[0]));
 
    $fecha = date("d/m/Y");
    $fechaExplode = explode('/', $fecha);
-
 
    switch ($fechaExplode[1]) {
     case 01: $mes = 'Enero'; break;
@@ -23,7 +23,9 @@
    }
 
   // Establish image factors:
+
   $text = $nombre." está en una relación con";
+  // $text = $nombre." está en una relación con";
   $font_size = 14; // Font size is in pixels.
   $font_file = 'css/fonts/americanTypewriter/american-typewriter.ttf'; // This is the path to your font file.
 
@@ -58,10 +60,26 @@
   imagefill($image, 0, 0, $bg_color);
 
   // Fix starting x and y coordinates for the text:
-  $x = 90; // Padding of 5 pixels.
-  $y = 110; // So that the text is vertically centered.
+  $length_name = strlen($nombre);
+  switch (intval($length_name)) {
+   case 1: $pixels_plus = 13; break;
+   case 2: $pixels_plus = 10; break;
+   case 3: $pixels_plus = 9; break;
+   case 4: $pixels_plus = 8; break;
+   case 5: $pixels_plus = 7.5; break;
+   case 6: $pixels_plus = 7; break;
+   case 7: $pixels_plus = 6.5; break;
+   case 8: $pixels_plus = 6.5; break;
+   case 9: $pixels_plus = 6.5; break;
+   case 10: $pixels_plus = 6.5; break;
+  }
 
-  $x_colombia = 410; // Padding of 5 pixels.
+  $x_length_name = $length_name * $pixels_plus; 
+ 
+  $x = 140 - intval($x_length_name); // Padding of 5 pixels.
+  $y = 110; // So that the text is vertically centered.|
+
+  $x_colombia = 350 + intval($x_length_name); // Padding of 5 pixels.
 
   $y_fecha = 140;
   $x_fecha = 265;
@@ -73,7 +91,7 @@
 
   // Generate and send image to browser:
   header('Content-type: image/png');
-  imagepng($image,$nombre.'.png');
+  imagepng($image,$nombre_imagen.'.png');
 
   // Destroy image in memory to free-up resources:
   imagedestroy($image);
@@ -83,12 +101,12 @@
   $margen_inf = 10;
   $sx = imagesx($estampa);
   $sy = imagesy($estampa);
-  $im = imagecreatefrompng($nombre.'.png');
+  $im = imagecreatefrompng($nombre_imagen.'.png');
   $estampa = imagecreatefrompng('images/heart_status.png');
   imagecopy($im, $estampa,315, 50, 0, 0, 30, 28);
   // Generate and send image to browser:
   header('Content-type: image/png');
-  imagepng($im,$nombre.'.png');
+  imagepng($im,$nombre_imagen.'.png');
 
   // Destroy image in memory to free-up resources:
   imagedestroy($image);

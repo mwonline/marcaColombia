@@ -420,6 +420,9 @@
 .fa-chevron-right:before {
   content: "\f054";
 }
+.fa-chevron-right {
+  content: "\f054";
+}
 .fa-plus-circle:before {
   content: "\f055";
 }

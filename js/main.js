@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
   var inputName = '';
+  var path_name = '';
 
     $(".intro").show();
     $(".name-step, .result, .questions,.main-header").hide();
@@ -22,7 +23,7 @@ $(document).ready(function () {
     //    $(this).children('.thumb_slider').css('display', 'inherit');
     // });
 
-    //  $(".item-navtop").on( 'mouseleave', function () {
+    //  $(".item-navtop").no( 'mouseleave', function () {
     //       $(this).children('span').css('display', 'none');
     //       $(this).children('.thumb_slider').css('display', 'none');
     // });
@@ -40,6 +41,8 @@ $(document).ready(function () {
 
     $(".next-name").click(function(event){
       inputName = $("#name").val();
+      var splitName = inputName.split(' ');
+      path_name = splitName[0].toLowerCase();
       randomString();
       $(".name").text(inputName);
       if (inputName == '' || inputName == null) {
@@ -232,7 +235,8 @@ $(document).ready(function () {
         url: "createImg.php",
       }).done(function() {
           // $(location).attr('href','');
-          window.open('https://www.facebook.com/sharer/sharer.php?u=http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
+          window.open('https://www.facebook.com/sharer/sharer.php?u=http://mwonline.com.co/marcaColombia/'+path_name+'.png');
+          // window.open('https://www.facebook.com/sharer/sharer.php?p[images][0]=http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
       });
 
     });
@@ -246,7 +250,7 @@ $(document).ready(function () {
         url: "createImg.php",
       }).done(function() {
           // $(location).attr('href','');
-          window.open('https://twitter.com/?status=Marca Colombia http://norfipc.com/fotos/frases-amor/todo-incluido.jpeg');
+          window.open('https://twitter.com/?status=Marca Colombia http://mwonline.com.co/marcaColombia/'+path_name+'.png');
       });
 
     });

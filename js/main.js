@@ -40,28 +40,22 @@ $(document).ready(function () {
     })
 
     $(".next-name").click(function(event){
-      inputName = $("#name").val();
+      inputName = remplace_caracteres($("#name").val().toLowerCase());
+
       var splitName = inputName.split(' ');
       path_name = splitName[0];
       path_name = path_name.toLowerCase();
+
       randomString();
 
-      $.ajax({
-        method: "POST",
-        data: { nombre: inputName },
-        url: "createImg.php",
-      }).done(function() {
-        console.log('creando Imagen');
-      });
-
       $(".name").text(inputName);
-      if (inputName == '' || inputName == null) {
+      // if (inputName == '' || inputName == null) {
         console.log('Ingrese su nombre !!');
         $("#name").attr("placeholder", "Ingresa tu nombre");
         $("#name").addClass("error");
-        return false;
-      }
-      else{
+        // return false;
+      // }
+      // else{
         event.preventDefault();
         $(".name-step").fadeOut(100);
         $(".name-step").removeClass('on');
@@ -78,7 +72,7 @@ $(document).ready(function () {
         }
         $('.next-name').parent().addClass('hide_arrow');
         $('.next-01').parent().removeClass('hide_arrow');
-      }
+      // }
     })
 
     $(".next-01").click(function(event){
@@ -254,7 +248,7 @@ $(document).ready(function () {
                           ',top='    + top    +
                           ',left='   + left;
              
-             window.open(url, 'facebook', opts);
+             // window.open(url, 'facebook', opts);
           
              return false;
 
@@ -282,7 +276,7 @@ $(document).ready(function () {
                           ',top='    + top    +
                           ',left='   + left;
              
-             window.open(url, 'twitter', opts);
+             // window.open(url, 'twitter', opts);
           
              return false;
 
@@ -310,4 +304,60 @@ function randomString(){
     $(".msg-final").text('¡Son el uno para el otro!');
     $(".msg-second").text('Tú y COLOMBIA van juntos por buenas cosas.');
   }
+}
+
+myFunction();
+function myFunction() {
+    var month = new Array();
+    month[0] = "Enero";
+    month[1] = "Febrero";
+    month[2] = "Marzo";
+    month[3] = "Abril";
+    month[4] = "Mayo";
+    month[5] = "Junio";
+    month[6] = "Julio";
+    month[7] = "Augosto";
+    month[8] = "Septiembre";
+    month[9] = "Octubre";
+    month[10] = "Noviembre";
+    month[11] = "Diciembre";
+
+    var date = new Date();
+    var mes = month[date.getMonth()];
+    var dia = date.getDate();
+    var year = date.getFullYear();
+    var fecha = dia + ' de ' + mes + ' de ' + year;
+    $('.date-txt').text(fecha);
+}
+
+function remplace_caracteres(nombre)
+{
+  nombre=nombre.replace('Á','A');
+  nombre=nombre.replace('á','a');
+  nombre=nombre.replace('à','a');
+  nombre=nombre.replace('É','E');
+  nombre=nombre.replace('é','e');
+  nombre=nombre.replace('è','e');
+  nombre=nombre.replace('Í','I');
+  nombre=nombre.replace('í','i');
+  nombre=nombre.replace('ì','i');
+  nombre=nombre.replace('Ó','O');
+  nombre=nombre.replace('ó','o');
+  nombre=nombre.replace('ò','o');
+  nombre=nombre.replace('Ú','U');
+  nombre=nombre.replace('ú','u');
+  nombre=nombre.replace('ù','u');
+  nombre=nombre.replace('Ñ','N');
+  nombre=nombre.replace('ñ','n');
+  nombre=nombre.replace('Ä','A');
+  nombre=nombre.replace('ä','a');
+  nombre=nombre.replace('Ë','E');
+  nombre=nombre.replace('ë','e');
+  nombre=nombre.replace('Ï','I');
+  nombre=nombre.replace('ï','i');
+  nombre=nombre.replace('Ö','O');
+  nombre=nombre.replace('ö','o');
+  nombre=nombre.replace('Ü','U'); 
+  nombre=nombre.replace('ü','u'); 
+  return nombre;
 }

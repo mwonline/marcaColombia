@@ -2,7 +2,7 @@
    $nombre = $_POST["nombre"];
    $nombreExplode = explode(" ", $nombre);
    $nombre_imagen = strtolower($nombreExplode[0]);
-   $nombre = ucfirst(strtolower($nombreExplode[0]));
+   $nombre = strtolower($nombreExplode[0]);
 
    $fecha = date("d/m/Y");
    $fechaExplode = explode('/', $fecha);
@@ -24,8 +24,9 @@
 
   // Establish image factors:
 
-  $text = $nombre." está en una relación con";
   // $text = $nombre." está en una relación con";
+  // $text = " está en una relación con";
+  $text = $nombre." está en una relación con";
   $font_size = 14; // Font size is in pixels.
   $font_file = 'css/fonts/americanTypewriter/american-typewriter.ttf'; // This is the path to your font file.
 
@@ -60,26 +61,47 @@
   imagefill($image, 0, 0, $bg_color);
 
   // Fix starting x and y coordinates for the text:
-  $length_name = strlen($nombre);
-  switch (intval($length_name)) {
-   case 1: $pixels_plus = 13; break;
-   case 2: $pixels_plus = 10; break;
-   case 3: $pixels_plus = 9; break;
-   case 4: $pixels_plus = 8; break;
-   case 5: $pixels_plus = 7; break;
-   case 6: $pixels_plus = 7; break;
-   case 7: $pixels_plus = 7; break;
-   case 8: $pixels_plus = 7; break;
-   case 9: $pixels_plus = 7; break;
-   case 10: $pixels_plus = 5; break;
-  }
+  // $length_name = strlen($nombre);
+  $pixels_vocals = 0;
+  for($i=0;$i<strlen($nombre);$i++){ 
+      echo $nombre[$i]; 
 
-  $x_length_name = $length_name * $pixels_plus; 
- 
-  $x = 140 - intval($x_length_name); // Padding of 5 pixels.
+      switch ($nombre[$i]) {
+        case 'a': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'b': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'c': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'd': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'e': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'f': $pixels_vocals = $pixels_vocals + 7; break;
+        case 'g': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'h': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'i': $pixels_vocals = $pixels_vocals + 6; break;
+        case 'j': $pixels_vocals = $pixels_vocals + 6; break;
+        case 'k': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'l': $pixels_vocals = $pixels_vocals + 6; break;
+        case 'm': $pixels_vocals = $pixels_vocals + 18; break;
+        case 'n': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'o': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'p': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'q': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'r': $pixels_vocals = $pixels_vocals + 9; break;
+        case 's': $pixels_vocals = $pixels_vocals + 9; break;
+        case 't': $pixels_vocals = $pixels_vocals + 8; break;
+        case 'u': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'v': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'w': $pixels_vocals = $pixels_vocals + 15; break;
+        case 'x': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'y': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'z': $pixels_vocals = $pixels_vocals + 10; break;
+      }
+  } 
+
+  $pixels_plus = $pixels_vocals / 2;
+
+  $x = 133 - $pixels_plus; // Padding of 5 pixels.
   $y = 110; // So that the text is vertically centered.|
 
-  $x_colombia = 350 + intval($x_length_name); // Padding of 5 pixels.
+  $x_colombia = 352 + $pixels_plus; // Padding of 5 pixels.
 
   $y_fecha = 140;
   $x_fecha = 265;
@@ -99,16 +121,17 @@
   // Establecer los márgenes para la estampa y obtener el alto/ancho de la imagen de la estampa
   $margen_dcho = 10;
   $margen_inf = 10;
-  $sx = imagesx($estampa);
-  $sy = imagesy($estampa);
+  // $sx = imagesx($estampa);
+  // $sy = imagesy($estampa);
   $im = imagecreatefrompng($nombre_imagen.'.png');
   $estampa = imagecreatefrompng('images/heart_status.png');
   imagecopy($im, $estampa,315, 50, 0, 0, 30, 28);
   // Generate and send image to browser:
   header('Content-type: image/png');
   imagepng($im,$nombre_imagen.'.png');
+  // imagepng($im);
 
   // Destroy image in memory to free-up resources:
-  imagedestroy($image);
+  // imagedestroy($image);
 
 ?>

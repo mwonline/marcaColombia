@@ -86,6 +86,9 @@ body{
       padding: 2rem;
     }
 
+    .sectionBtn{
+      z-index:999 !important;
+    }
 
     .main-header h2{
       text-transform: uppercase;
@@ -255,7 +258,7 @@ body{
     text-align: center;
     color: #F2C30F;
     height: 50px;
-    font-size: 1.4em;
+    font-size: 1.2em;
     border-radius: 10px !important;
     width: 400px;
   }
@@ -680,6 +683,43 @@ body{
 ===========================================================*/
     @media only screen and (min-width : 481px) and (max-width : 1023px) {
 
+
+        .title-question-1{
+          font-size: 23px;
+          left: 67px;
+          top: 140px;
+        }
+
+        .title-question-2{
+          font-size: 23px;
+          left: 80px;
+          top: 95px;
+        }
+
+        .title-question-3{
+          font-size: 22px;
+          left: 80px;
+          width: 150px;
+          top: 112px;
+        }
+
+        .title-question-4{
+          font-size: 18px;
+          top: 130px;
+        }
+
+        .title-question-5{
+          font-size: 25px;
+          top: 110px;
+        }
+
+        .title-question-6{
+          font-size: 23px;
+          left: 59px;
+          width: 186px;
+          top: 160px;
+        }
+
         h2.intro-header{
           font-size: 55px;
           width: 550px;
@@ -753,8 +793,13 @@ body{
 
     @media only screen and (min-width : 320px) and (max-width:480px)  {
 
+      .padding-top-mquery{
+        padding-top: 30px;
+      }
+
       .main-header{
         padding:1rem;
+        padding-bottom:4rem;
       }
 
       h2.intro-header{
@@ -781,9 +826,8 @@ body{
       .main-header h2{
         font-size: 0.8em;
         margin-top: 10px;
+        margin-bottom: 20px;
       }
-
-
 
       section.intro{
         -webkit-transform: translate(0px, -90%);
@@ -898,6 +942,7 @@ body{
 
       .txt-result-01{
         font-size: 19px;
+        margin-top: 30px;
       }
 
       .status{
@@ -930,9 +975,6 @@ body{
         position: static;
       }
 
-    }
-    .sectionBtn{
-      z-index:999 !important;
     }
 
 /*-----  End of media queries phonescreen 320px to 480px  ------*/

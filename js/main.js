@@ -251,7 +251,7 @@ $(document).ready(function () {
     $(".next-result").click(function(event){
       event.preventDefault();
 
-      
+      $('#compartir_tw').attr('href','https://twitter.com/?status=Yo estoy %23enunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png Descubre si tu también estás en una relación con COlombia:http://20dejulio.colombia.co');
 
       $(".sixth-q").fadeOut(100);
       $(".sixth-q").removeClass('on');
@@ -320,6 +320,17 @@ $(document).ready(function () {
       return false;
 
     });
+
+
+     $('#compartir_tw').on('click',function(){
+      $.ajax({
+        method: "POST",
+        data: { nombre: inputName },
+        url: "createImg.php",
+      });
+      // twttr.widgets.load();
+    });
+
 
     
 });

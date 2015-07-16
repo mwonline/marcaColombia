@@ -600,6 +600,7 @@ body{
       left: 0;
       padding: 2em;
       z-index: 999;
+      height: 5px;
     }
 
     /* socialmedia */

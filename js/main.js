@@ -251,7 +251,7 @@ $(document).ready(function () {
     $(".next-result").click(function(event){
       event.preventDefault();
 
-      $('#compartir_tw').attr('href','https://twitter.com/?status=Yo estoy %23enunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png Descubre si tu también estás en una relación con COlombia:http://20dejulio.colombia.co');
+      $('#compartir_tw').attr('href','https://twitter.com/?status=Yo estoy %23enunarelacionconCOlombia http://20dejulio.colombia.co/images_fb/'+path_name+'.png Descubre si tu también estás en una relación con COlombia:http://20dejulio.colombia.co');
 
       $(".sixth-q").fadeOut(100);
       $(".sixth-q").removeClass('on');

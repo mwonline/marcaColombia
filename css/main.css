@@ -256,7 +256,7 @@ body{
     border: 1px solid #234789 !important;
     box-shadow: inset 0 1px 3px #071C47 !important;
     text-align: center;
-    color: #F2C30F;
+    color: #FFF;
     height: 55px;
     font-size: 1.2em;
     border-radius: 10px !important;
@@ -784,6 +784,11 @@ body{
           position: static;
         }
 
+        .arrow_right_last{
+          display: none;
+        }
+
+
     }
 /*-----  End of media queries screen 481px to 767px  ------*/
 
@@ -808,8 +813,12 @@ body{
         width: 240px;
       }
 
-      .arrow_right, .arrow_right_last{
+      .arrow_right{
         right: 5px;
+      }
+
+      .arrow_right_last{
+        display: none;
       }
 
       a.next-btn-arrow, .next-btn-arrow_last{
@@ -872,6 +881,8 @@ body{
         width: 240px;
         margin: 0 auto;
         height: 48px;
+
+
       }
 
       .questions{
@@ -985,7 +996,7 @@ body{
 ================================================================*/
 
     @media only screen and (min-width : 359px) and (max-width:374px)  {
-      
+
       h2.intro-header{
         font-size: 25px;
         width: 240px;

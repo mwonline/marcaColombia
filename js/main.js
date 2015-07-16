@@ -1,4 +1,25 @@
+
+
+
+// window.fbAsyncInit = function() {
+//   FB.init({
+//     appId      : '866748646748336',
+//     xfbml      : true,
+//     version    : 'v2.4'
+//   });
+//   };
+
+//   (function(d, s, id){
+//    var js, fjs = d.getElementsByTagName(s)[0];
+//    if (d.getElementById(id)) {return;}
+//    js = d.createElement(s); js.id = id;
+//    js.src = "//connect.facebook.net/en_US/sdk.js";
+//    fjs.parentNode.insertBefore(js, fjs);
+// }(document, 'script', 'facebook-jssdk'));
+
 $(document).ready(function () {
+
+  // alert(screen.width);
 
   var inputName = '';
   var path_name = '';
@@ -39,23 +60,63 @@ $(document).ready(function () {
       $('.next-name').parent().removeClass('hide_arrow');
     })
 
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            inputName = remplace_caracteres($("#name").val().toLowerCase());
+
+            var splitName = inputName.split(' ');
+            path_name = splitName[0];
+            path_name = path_name.toLowerCase();
+            inputName = path_name.charAt(0).toUpperCase() + path_name.slice(1);
+
+            randomString();
+
+            $(".name").text(inputName);
+            if (inputName == '' || inputName == null) {
+              console.log('Ingrese su nombre !!');
+              $("#name").attr("placeholder", "Ingresa tu nombre");
+              $("#name").addClass("error");
+              return false;
+            }
+            else{
+              event.preventDefault();
+              $(".name-step").fadeOut(100);
+              $(".name-step").removeClass('on');
+              $(".questions, .slidernav-top").show();
+              $(".first-q").addClass('on');
+              $(".first-q").fadeIn(1000);
+              $(".url-co").removeClass('co-icon-yellow').addClass('co-icon-blue');
+              $("body").css('background-color','#CE2432');
+              $(".slidernav-top ol").addClass('bg-red');
+              $(".oneli").addClass('actived');
+              if ($(".item-navtop").hasClass("actived")) {
+                $(".item-navtop.actived").children('span').css('display', 'inherit');
+                $(".item-navtop.actived").children('.thumb_slider').css('display', 'inherit');
+              }
+              $('.next-name').parent().addClass('hide_arrow');
+              $('.next-01').parent().removeClass('hide_arrow');
+            }
+        }
+    });
+
     $(".next-name").click(function(event){
       inputName = remplace_caracteres($("#name").val().toLowerCase());
 
       var splitName = inputName.split(' ');
       path_name = splitName[0];
       path_name = path_name.toLowerCase();
+      inputName = path_name.charAt(0).toUpperCase() + path_name.slice(1);
 
       randomString();
 
       $(".name").text(inputName);
-      // if (inputName == '' || inputName == null) {
+      if (inputName == '' || inputName == null) {
         console.log('Ingrese su nombre !!');
         $("#name").attr("placeholder", "Ingresa tu nombre");
         $("#name").addClass("error");
-        // return false;
-      // }
-      // else{
+        return false;
+      }
+      else{
         event.preventDefault();
         $(".name-step").fadeOut(100);
         $(".name-step").removeClass('on');
@@ -72,10 +133,13 @@ $(document).ready(function () {
         }
         $('.next-name').parent().addClass('hide_arrow');
         $('.next-01').parent().removeClass('hide_arrow');
-      // }
+      }
     })
 
     $(".next-01").click(function(event){
+
+      $("#compartir_tw").attr('href','');
+
       event.preventDefault();
       $(".first-q").fadeOut(100);
       $(".first-q").removeClass('on');
@@ -186,6 +250,9 @@ $(document).ready(function () {
 
     $(".next-result").click(function(event){
       event.preventDefault();
+
+      
+
       $(".sixth-q").fadeOut(100);
       $(".sixth-q").removeClass('on');
       $(".result").fadeIn(1000);
@@ -231,56 +298,26 @@ $(document).ready(function () {
       $(".sixth-q").hide();
     }
 
-    $("#compartir_fb").click(function(){
+
+    $('#compartir_fb').on('click',function(){
 
       $.ajax({
         method: "POST",
         data: { nombre: inputName },
         url: "createImg.php",
-      }).done(function() {
-          var width  = 575,
-                 height = 400,
-                 left   = ($(window).width()  - width)  / 2,
-                 top    = ($(window).height() - height) / 2,
-                 url = 'https://www.facebook.com/sharer/sharer.php?u=http://mwonline.com.co/marcaColombia/'+path_name+'.png&t=TEstTitulo',
-                 opts   = ',width='  + width  +
-                          ',height=' + height +
-                          ',top='    + top    +
-                          ',left='   + left;
-             
-             // window.open(url, 'facebook', opts);
-          
-             return false;
-
       });
 
-    });
-
-
-    $("#compartir_tw").click(function(){
-
-      $.ajax({
-        method: "POST",
-        data: { nombre: inputName },
-        url: "createImg.php",
-      }).done(function() {
-          // $(location).attr('href','');
-          // window.open('https://twitter.com/?status= &#35;nunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png');
-          var width  = 575,
-                 height = 400,
-                 left   = ($(window).width()  - width)  / 2,
-                 top    = ($(window).height() - height) / 2,
-                 url    = 'https://twitter.com/?status=%23enunarelacionconCOlombia http://mwonline.com.co/marcaColombia/'+path_name+'.png',
-                 opts   = ',width='  + width  +
-                          ',height=' + height +
-                          ',top='    + top    +
-                          ',left='   + left;
-             
-             // window.open(url, 'twitter', opts);
-          
-             return false;
-
-      });
+      FB.ui({
+        method: 'share',
+        href: '20dejulio.colombia.co/',
+        // href: 'https://developers.facebook.com/docs/',
+        picture: '20dejulio.colombia.co/images_fb/'+path_name+'.png',
+        name: 'prueba de name',
+        caption:'prueba de caption',
+        description:'prueba de description',
+        title: 'prueba de titulo',
+      }, function(response){});
+      return false;
 
     });
 

@@ -312,10 +312,10 @@ $(document).ready(function () {
         href: '20dejulio.colombia.co/',
         // href: 'https://developers.facebook.com/docs/',
         picture: '20dejulio.colombia.co/images_fb/'+path_name+'.png',
-        name: 'prueba de name',
-        caption:'prueba de caption',
-        description:'prueba de description',
-        title: 'prueba de titulo',
+        // name: 'prueba de name',
+        // caption:'prueba de caption',
+        // description:'prueba de description',
+        // title: 'prueba de titulo',
       }, function(response){});
       return false;
 

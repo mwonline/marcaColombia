@@ -218,6 +218,7 @@ body{
     -webkit-transform: translate(0px, -50%);
     -moz-transform: translate(0px, -50%);
     -o-transform: translate(0px, -50%);
+    ms-transform: translate(0px, -50%);
     transform: translate(0px, -50%);
     top: 50%;
   }
@@ -1027,3 +1028,9 @@ body{
 
 
 /*-----  End of media queries screen 359px to 374px  ------*/
+
+@-moz-document url-prefix() {
+   section.result{
+     top: 25% !important;
+   }
+}

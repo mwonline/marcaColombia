@@ -78,7 +78,7 @@
         case 'G': $pixels_vocals = $pixels_vocals + 10; break;
         case 'H': $pixels_vocals = $pixels_vocals + 12; break;
         case 'I': $pixels_vocals = $pixels_vocals + 7; break;
-        case 'J': $pixels_vocals = $pixels_vocals + 5; break;
+        case 'J': $pixels_vocals = $pixels_vocals + 8; break;
         case 'K': $pixels_vocals = $pixels_vocals + 12; break;
         case 'L': $pixels_vocals = $pixels_vocals + 8; break;
         case 'M': $pixels_vocals = $pixels_vocals + 18; break;

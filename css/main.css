@@ -608,6 +608,7 @@ body{
       padding: 2em;
       z-index: 999;
       height: 5px;
+      padding-top: 0px;
     }
 
     /* socialmedia */
@@ -691,7 +692,17 @@ body{
 /*===========================================================
 =            media queries screen 481px to 767px            =
 ===========================================================*/
-    @media only screen and (min-width : 481px) and (max-width : 1023px) {
+    @media only screen and (min-width : 761px) and (max-width : 1023px) {
+          
+
+        .first-q, .second-q, .tirth-q, .fourth-q, .fifth-q, .sixth-q{
+          
+          margin-top: -100px !important;
+        }
+
+        .q-selector{
+          margin-top: -30px;
+        }
 
         .title-question-1{
           font-size: 23px;
@@ -700,33 +711,33 @@ body{
         }
 
         .title-question-2{
-          font-size: 23px;
-          left: 80px;
-          top: 95px;
+          font-size: 20px;
+          left: 70px;
+          top: 140px;
         }
 
         .title-question-3{
           font-size: 22px;
-          left: 80px;
+          left: 110px;
           width: 150px;
           top: 112px;
         }
 
         .title-question-4{
           font-size: 18px;
-          top: 130px;
+          top: 150px;
         }
 
         .title-question-5{
           font-size: 25px;
-          top: 110px;
+          top: 130px;
         }
 
         .title-question-6{
           font-size: 23px;
-          left: 59px;
+          left: 90px;
           width: 186px;
-          top: 160px;
+          top: 150px;
         }
 
         h2.intro-header{
@@ -747,23 +758,28 @@ body{
         .social-networks{
           text-align: center;
           width: 240px;
-          margin: 40px auto;
+          float: left;
+          margin-top: -40px !important;
         }
 
         .brandTag {
           text-align: center;
+          float: right !important;
+          margin-top: -40px !important;
+
         }
 
         .brandTag h6{
-          margin-left:-15px;
-          margin-top: 0;
+          /*margin-left: 350px;*/
+          float: right !important;
         }
-
+        html,body{
+          /*background: black !important;*/
+        }
         .q-selector{
           padding-left: 60px;
           padding-right: 0;
           width: 550px;
-          margin:30px auto;
         }
 
         .status header {
@@ -789,13 +805,17 @@ body{
         }
 
         .main-footer{
-          position: static;
+          position: absolute;
+          bottom: 0px !important;
+
         }
 
         .arrow_right_last{
           display: none;
         }
 
+<<<<<<< HEAD
+=======
         figure.logo-CO{
           position: relative;
           left: 140px;
@@ -803,6 +823,7 @@ body{
         }
 
 
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
     }
 /*-----  End of media queries screen 481px to 767px  ------*/
 
@@ -812,6 +833,10 @@ body{
 ================================================================*/
 
     @media only screen and (min-width : 320px) and (max-width:480px)  {
+      
+      .wrap-q{
+
+      }
 
       .padding-top-mquery{
         padding-top: 30px;
@@ -905,6 +930,7 @@ body{
 
       .wrap-q{
         width: 300px;
+        margin-top: -100px;
       }
 
       #drop_container{
@@ -1002,10 +1028,15 @@ body{
         position: static;
       }
 
+<<<<<<< HEAD
+      .hideTextPhone{
+        display: none;
+=======
       figure.logo-CO{
         position: relative;
         left: 90px;
         top: 30px;
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
       }
 
     }
@@ -1040,14 +1071,158 @@ body{
         line-height: 28px;
       }
 
+<<<<<<< HEAD
+    }
+=======
       figure.logo-CO{
         position: relative;
         left: 90px;
         top: 30px;
       }
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
 
 
+/*-----  End of media queries screen 359px to 374px  ------*/
 
+/*================================================================
+=            media queries phonescreen 481px to 374px            =
+================================================================*/
+
+    @media only screen and (min-width : 481px) and (max-width:760px)  {
+      
+      section.intro {
+        height: 200px;
+      }
+
+      
+
+      h2.intro-header{
+        font-size: 30px;
+        width: 240px;
+        line-height: 35px;
+      }
+
+      p.msg-final{
+        font-size: 34px;
+        line-height: 28px;
+      }
+
+      p.msg-second{
+        font-size: 20px;
+        line-height: 28px;
+      }
+
+      p.txt-share{
+        font-size: 19px;
+        color: rgb(206, 36, 50);
+        padding-bottom: 15px;
+        line-height: 28px;
+      }
+
+      .brandTag h6 {
+        color: #FFF;
+        font-size: 1em;
+        font-weight: normal;
+        font-style: normal;
+        margin-top: -40px;
+      }
+
+      .name-step h3 {
+        color: #FFF;
+        font-size: 1.5em;
+        font-weight: normal;
+        margin-bottom: 30px;
+      }
+
+      section.name-step {
+        text-align: center;
+        position: relative;
+        -webkit-transform: translate(0px, -50%);
+        -moz-transform: translate(0px, -50%);
+        -o-transform: translate(0px, -50%);
+        transform: translate(0px, -50%);
+        top: 30%;
+      }
+      
+      .title-question-1 {
+        top: 135px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      .title-question-2 {
+        top: 130px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      .title-question-3 {
+        top: 115px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      .title-question-4 {
+        top: 110px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      .title-question-5 {
+        top: 130px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      .title-question-6 {
+        top: 150px;
+        left: 65px;
+        font-size: 1.4em;
+      }
+
+      label.radio-red, label.radio-yellow, label.radio-blue {
+        display: block;
+        color: #FFF;
+        font-size: 18px;
+        margin-bottom: 40px;
+      }
+
+      .q-selector{
+        width: 500px !important;
+        float: right;
+        margin-top: -30px;
+      }
+
+      .first-q, .second-q, .tirth-q, .fourth-q, .fifth-q, .sixth-q{
+        float: left !important;
+        width: 100%;
+        margin-top: -100px !important;
+      }
+      .main-footer {
+        float: left !important;
+        width: 100% !important;
+      }
+      .radio-yellow,.radio-red{
+        width: 100% !important;
+      }
+
+      .main-header h2{
+        font-size: 15px !important;
+      }
+      .share-facebook span{
+        width: 80% !important;
+        font-size: 10px;
+      }
+      i.ico-share-face{
+        width: 10% !important;
+      }
+      .share-twitter span{
+        width: 80% !important;
+        font-size: 10px;
+      }
+      i.ico-share-twit{
+        width: 10% !important;
+      }
     }
 
 
@@ -1056,5 +1231,17 @@ body{
 @-moz-document url-prefix() {
    section.result{
      top: 25% !important;
+   }
+   nav.social-networks li{
+     float: left;
+     margin-left: 10px;
+     margin-top: 50px;
+   }
+   .brandTag h6{
+     color: #FFF;
+     font-size: 1em;
+     font-weight: normal;
+     font-style: normal;
+     margin-top: 35px;
    }
 }

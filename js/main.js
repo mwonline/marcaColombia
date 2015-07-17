@@ -22,6 +22,7 @@ $(document).ready(function () {
   // alert(screen.width);
 
   var inputName = '';
+  var nameFull = '';
   var path_name = '';
 
     $(".intro").show();
@@ -63,6 +64,7 @@ $(document).ready(function () {
     $(document).keypress(function(e) {
         if(e.which == 13) {
             inputName = remplace_caracteres($("#name").val().toLowerCase());
+            nameFull = $("#name").val();
 
             var splitName = inputName.split(' ');
             path_name = splitName[0];
@@ -80,6 +82,13 @@ $(document).ready(function () {
             }
             else{
               event.preventDefault();
+
+              $.ajax({
+                method: "POST",
+                data: { nombre: inputName },
+                url: "createImg.php",
+              });
+
               $(".name-step").fadeOut(100);
               $(".name-step").removeClass('on');
               $(".questions, .slidernav-top").show();
@@ -95,12 +104,16 @@ $(document).ready(function () {
               }
               $('.next-name').parent().addClass('hide_arrow');
               $('.next-01').parent().removeClass('hide_arrow');
+              window.scrollTo(0);
+              $( document ).scrollTop( 0 );
+              $( window ).scrollTop( 0 );
             }
         }
     });
 
     $(".next-name").click(function(event){
       inputName = remplace_caracteres($("#name").val().toLowerCase());
+      nameFull = $("#name").val();
 
       var splitName = inputName.split(' ');
       path_name = splitName[0];
@@ -118,6 +131,13 @@ $(document).ready(function () {
       }
       else{
         event.preventDefault();
+
+        $.ajax({
+          method: "POST",
+          data: { nombre: inputName },
+          url: "createImg.php",
+        });
+
         $(".name-step").fadeOut(100);
         $(".name-step").removeClass('on');
         $(".questions, .slidernav-top").show();
@@ -133,6 +153,10 @@ $(document).ready(function () {
         }
         $('.next-name').parent().addClass('hide_arrow');
         $('.next-01').parent().removeClass('hide_arrow');
+
+        window.scrollTo(0);
+        $( document ).scrollTop( 0 );
+        $( window ).scrollTop( 0 );
       }
     })
 
@@ -157,6 +181,10 @@ $(document).ready(function () {
       }
       $('.next-01').parent().addClass('hide_arrow');
       $('.next-02').parent().removeClass('hide_arrow');
+
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
     })
 
 
@@ -180,6 +208,11 @@ $(document).ready(function () {
       }
       $('.next-02').parent().addClass('hide_arrow');
       $('.next-03').parent().removeClass('hide_arrow');
+
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
+
     })
 
     $(".next-03").click(function(event){
@@ -202,6 +235,11 @@ $(document).ready(function () {
       }
       $('.next-03').parent().addClass('hide_arrow');
       $('.next-04').parent().removeClass('hide_arrow');
+
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
+
     })
 
     $(".next-04").click(function(event){
@@ -224,10 +262,14 @@ $(document).ready(function () {
       }
       $('.next-04').parent().addClass('hide_arrow');
       $('.next-05').parent().removeClass('hide_arrow');
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
     })
 
     $(".next-05").click(function(event){
       event.preventDefault();
+
       $(".fifth-q").fadeOut(100);
       $(".fifth-q").removeClass('on');
       $(".sixth-q").addClass('on');
@@ -246,12 +288,31 @@ $(document).ready(function () {
       }
       $('.next-05').parent().addClass('hide_arrow');
       $('.next-result').parent().removeClass('hide_arrow');
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
     })
 
     $(".next-result").click(function(event){
       event.preventDefault();
 
-      $('#compartir_tw').attr('href','https://twitter.com/?status=Yo estoy %23enunarelacionconCOlombia http://20dejulio.colombia.co/images_fb/'+path_name+'.png Descubre si tu también estás en una relación con COlombia:http://20dejulio.colombia.co');
+      var dispositivo = navigator.userAgent.toLowerCase();
+      
+      if( dispositivo.search(/iphone|ipod|ipad/) > -1 ){
+        // alert('celular no es android');
+        $('#compartir_tw').attr('href','http://twitter.com/share?text=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí:');
+      }
+      else if( dispositivo.search(/android/) > -1 ){
+        // alert('share android');
+        $('#compartir_tw').attr('href','http://twitter.com/share?text=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí:http://20dejulio.colombia.co');
+      }
+      else{
+        // alert('pc');
+        $('#compartir_tw').attr('href','https://twitter.com/?status=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí:http://20dejulio.colombia.co');
+      }
+
+
+      $('.main-header').find('h2').addClass('hideTextPhone');
 
       $(".sixth-q").fadeOut(100);
       $(".sixth-q").removeClass('on');
@@ -259,6 +320,25 @@ $(document).ready(function () {
       $(".slidernav-top").hide();
       $("body").css('background-color','#F2C245');
       $(".arrow_right, .arrow_right_last").hide();
+
+      var infoUser = {
+        'name'    : nameFull,
+        'qOne'    : $('input[name=q1]:checked', '#formQuestionOne').val(),
+        'qTwo'    : $('input[name=q2]:checked', '#formQuestionTwo').val(),
+        'qThree'  : $('input[name=q3]:checked', '#formQuestionThree').val(),
+        'qFour'   : $('input[name=q4]:checked', '#formQuestionFour').val(),
+        'qFive'   : $('input[name=q5]:checked', '#formQuestionFive').val(),
+        'qSix'    : $('input[name=q6]:checked', '#formQuestionSix').val()
+      }
+      ajaxInsertQuestion(infoUser);
+
+      window.scrollTo(0);
+      $( document ).scrollTop( 0 );
+      $( window ).scrollTop( 0 );
+
+      
+
+
     })
 
     if($(".first-q").hasClass("on")){
@@ -301,38 +381,26 @@ $(document).ready(function () {
 
     $('#compartir_fb').on('click',function(){
 
-      $.ajax({
-        method: "POST",
-        data: { nombre: inputName },
-        url: "createImg.php",
-      });
+    //   FB.ui({
+    //     method: 'share',
+    //     href: '20dejulio.colombia.co/index2.html',
+    //     picture: '20dejulio.colombia.co/images_fb/'+path_name+'.png',
+    //     title: '¡DESCUBRE SI TÚ TAMBIÉN ESTÁS EN UNA RELACIÓN CON COLOMBIA!',
+    //   }, function(response){});
+    //   return false;
+
+    // });
 
       FB.ui({
-        method: 'share',
-        href: '20dejulio.colombia.co/',
-        // href: 'https://developers.facebook.com/docs/',
+        method: 'feed',
+        link: '20dejulio.colombia.co/',
         picture: '20dejulio.colombia.co/images_fb/'+path_name+'.png',
-        // name: 'prueba de name',
-        // caption:'prueba de caption',
-        // description:'prueba de description',
-        // title: 'prueba de titulo',
+        // title: '¡DESCUBRE SI TÚ TAMBIÉN ESTÁS EN UNA RELACIÓN CON COLOMBIA!',
+        name: '¡DESCUBRE SI TÚ TAMBIÉN ESTÁS EN UNA RELACIÓN CON COLOMBIA!',
       }, function(response){});
-      return false;
+
 
     });
-
-
-     $('#compartir_tw').on('click',function(){
-      $.ajax({
-        method: "POST",
-        data: { nombre: inputName },
-        url: "createImg.php",
-      });
-      // twttr.widgets.load();
-    });
-
-
-    
 });
 
 function randomString(){
@@ -380,23 +448,23 @@ function myFunction() {
 
 function remplace_caracteres(nombre)
 {
-  nombre=nombre.replace('Á','A');
-  nombre=nombre.replace('á','a');
-  nombre=nombre.replace('à','a');
-  nombre=nombre.replace('É','E');
-  nombre=nombre.replace('é','e');
-  nombre=nombre.replace('è','e');
-  nombre=nombre.replace('Í','I');
-  nombre=nombre.replace('í','i');
-  nombre=nombre.replace('ì','i');
-  nombre=nombre.replace('Ó','O');
-  nombre=nombre.replace('ó','o');
-  nombre=nombre.replace('ò','o');
-  nombre=nombre.replace('Ú','U');
-  nombre=nombre.replace('ú','u');
-  nombre=nombre.replace('ù','u');
-  nombre=nombre.replace('Ñ','N');
-  nombre=nombre.replace('ñ','n');
+  // nombre=nombre.replace('Á','A');
+  // nombre=nombre.replace('á','a');
+  // nombre=nombre.replace('à','a');
+  // nombre=nombre.replace('É','E');
+  // nombre=nombre.replace('é','e');
+  // nombre=nombre.replace('è','e');
+  // nombre=nombre.replace('Í','I');
+  // nombre=nombre.replace('í','i');
+  // nombre=nombre.replace('ì','i');
+  // nombre=nombre.replace('Ó','O');
+  // nombre=nombre.replace('ó','o');
+  // nombre=nombre.replace('ò','o');
+  // nombre=nombre.replace('Ú','U');
+  // nombre=nombre.replace('ú','u');
+  // nombre=nombre.replace('ù','u');
+  // nombre=nombre.replace('Ñ','N');
+  // nombre=nombre.replace('ñ','n');
   nombre=nombre.replace('Ä','A');
   nombre=nombre.replace('ä','a');
   nombre=nombre.replace('Ë','E');
@@ -408,4 +476,15 @@ function remplace_caracteres(nombre)
   nombre=nombre.replace('Ü','U'); 
   nombre=nombre.replace('ü','u'); 
   return nombre;
+}
+
+function ajaxInsertQuestion(infoUser){
+
+
+  $.ajax({
+    method: "POST",
+    data: { infoUser: infoUser },
+    url: "insertUser.php",
+  });
+
 }

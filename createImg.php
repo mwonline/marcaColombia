@@ -1,8 +1,11 @@
 <?php # Script 1
+   header('Content-Type: text/html; charset=ISO-8859-1');
    $nombre = $_POST["nombre"];
    $nombreExplode = explode(" ", $nombre);
    $nombre_imagen = strtolower($nombreExplode[0]);
+
    $nombre = ucfirst (strtolower($nombreExplode[0]));
+
    // $nombre = strtolower($nombreExplode[0]);
 
    $fecha = date("d/m/Y");
@@ -65,8 +68,7 @@
   // $length_name = strlen($nombre);
   $pixels_vocals = 0;
   for($i=0;$i<strlen($nombre);$i++){ 
-      echo $nombre[$i]; 
-
+      echo $nombre[$i];
       switch ($nombre[$i]) {
         // MYUSCULAS
         case 'A': $pixels_vocals = $pixels_vocals + 11; break;
@@ -122,8 +124,45 @@
         case 'x': $pixels_vocals = $pixels_vocals + 11; break;
         case 'y': $pixels_vocals = $pixels_vocals + 10; break;
         case 'z': $pixels_vocals = $pixels_vocals + 9; break;
+        // ACENTOS
+        case 'á': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'à': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'é': $pixels_vocals = $pixels_vocals + 8; break;
+        case 'è': $pixels_vocals = $pixels_vocals + 8; break;
+        case 'í': $pixels_vocals = $pixels_vocals + 6; break;
+        case 'ì': $pixels_vocals = $pixels_vocals + 6; break;
+        case 'ó': $pixels_vocals = $pixels_vocals + 9; break;
+        case 'ò': $pixels_vocals = $pixels_vocals + 9; break;
+        case 'Ã³': $pixels_vocals = $pixels_vocals + 15; break;
+        case 'oacute;': $pixels_vocals = $pixels_vocals + 15; break;
+        case 'ú': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'ù': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'Á': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'À': $pixels_vocals = $pixels_vocals + 11; break;
+        case 'É': $pixels_vocals = $pixels_vocals + 9; break;
+        case 'È': $pixels_vocals = $pixels_vocals + 9; break;
+        case 'Í': $pixels_vocals = $pixels_vocals + 7; break;
+        case 'Ì': $pixels_vocals = $pixels_vocals + 7; break;
+        case 'Ó': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'Ò': $pixels_vocals = $pixels_vocals + 10; break;
+        case 'Ú': $pixels_vocals = $pixels_vocals + 12; break;
+        case 'Ù': $pixels_vocals = $pixels_vocals + 12; break;
+
       }
   } 
+
+  mb_internal_encoding('UTF-8');
+  mb_language('uni');
+
+  # detect if the string was passed in as unicode
+  $text_encoding = mb_detect_encoding($nombre, 'UTF-8, ISO-8859-1');
+  # make sure it's in unicode
+  if ($text_encoding != 'UTF-8') {
+      $disc = mb_convert_encoding($nombre, 'UTF-8', $text_encoding);
+  }
+
+
+  $nombre_imagen = sanear_string($nombre_imagen);
 
   $pixels_plus = $pixels_vocals / 2;
 
@@ -162,5 +201,70 @@
 
   // Destroy image in memory to free-up resources:
   // imagedestroy($image);
+
+
+
+
+
+
+
+  function sanear_string($string)
+  {
+
+      $string = trim($string);
+
+      $string = str_replace(
+          array('á', 'à', 'ä', 'â', 'ª', 'Á', 'À', 'Â', 'Ä'),
+          array('a', 'a', 'a', 'a', 'a', 'A', 'A', 'A', 'A'),
+          $string
+      );
+
+      $string = str_replace(
+          array('é', 'è', 'ë', 'ê', 'É', 'È', 'Ê', 'Ë'),
+          array('e', 'e', 'e', 'e', 'E', 'E', 'E', 'E'),
+          $string
+      );
+
+      $string = str_replace(
+          array('í', 'ì', 'ï', 'î', 'Í', 'Ì', 'Ï', 'Î'),
+          array('i', 'i', 'i', 'i', 'I', 'I', 'I', 'I'),
+          $string
+      );
+
+      $string = str_replace(
+          array('ó', 'ò', 'ö', 'ô', 'Ó', 'Ò', 'Ö', 'Ô'),
+          array('o', 'o', 'o', 'o', 'O', 'O', 'O', 'O'),
+          $string
+      );
+
+      $string = str_replace(
+          array('ú', 'ù', 'ü', 'û', 'Ú', 'Ù', 'Û', 'Ü'),
+          array('u', 'u', 'u', 'u', 'U', 'U', 'U', 'U'),
+          $string
+      );
+
+      $string = str_replace(
+          array('ñ', 'Ñ', 'ç', 'Ç'),
+          array('n', 'N', 'c', 'C',),
+          $string
+      );
+
+      //Esta parte se encarga de eliminar cualquier caracter extraño
+      $string = str_replace(
+          array("\\", "¨", "º", "-", "~",
+               "#", "@", "|", "!", "\"",
+               "·", "$", "%", "&", "/",
+               "(", ")", "?", "'", "¡",
+               "¿", "[", "^", "`", "]",
+               "+", "}", "{", "¨", "´",
+               ">", "< ", ";", ",", ":",
+               ".", " "),
+          '',
+          $string
+      );
+
+
+      return $string;
+  }
 
 ?>

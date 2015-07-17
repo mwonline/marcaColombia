@@ -497,6 +497,11 @@ body{
       padding-bottom: 15px;
     }
 
+    figure.logo-CO{
+      position: relative;
+      left: 240px;
+      top: 40px;
+    }
 
     .status header{
         width: 600px;
@@ -687,10 +692,10 @@ body{
 =            media queries screen 481px to 767px            =
 ===========================================================*/
     @media only screen and (min-width : 761px) and (max-width : 1023px) {
-          
+
 
         .first-q, .second-q, .tirth-q, .fourth-q, .fifth-q, .sixth-q{
-          
+
           margin-top: -100px !important;
         }
 
@@ -808,6 +813,12 @@ body{
           display: none;
         }
 
+        figure.logo-CO{
+          position: relative;
+          left: 140px;
+          top: 40px;
+        }
+
     }
 /*-----  End of media queries screen 481px to 767px  ------*/
 
@@ -817,7 +828,7 @@ body{
 ================================================================*/
 
     @media only screen and (min-width : 320px) and (max-width:480px)  {
-      
+
       .wrap-q{
 
       }
@@ -1016,6 +1027,12 @@ body{
         display: none;
       }
 
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
+      }
+
     }
 
 /*-----  End of media queries phonescreen 320px to 480px  ------*/
@@ -1048,6 +1065,12 @@ body{
         line-height: 28px;
       }
 
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
+      }
+
     }
 
 
@@ -1058,12 +1081,12 @@ body{
 ================================================================*/
 
     @media only screen and (min-width : 481px) and (max-width:760px)  {
-      
+
       section.intro {
         height: 200px;
       }
 
-      
+
 
       h2.intro-header{
         font-size: 30px;
@@ -1112,7 +1135,7 @@ body{
         transform: translate(0px, -50%);
         top: 30%;
       }
-      
+
       .title-question-1 {
         top: 135px;
         left: 65px;

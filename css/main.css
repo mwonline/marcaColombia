@@ -497,6 +497,12 @@ body{
       padding-bottom: 15px;
     }
 
+    figure.logo-CO{
+      position: relative;
+      left: 240px;
+      top: 40px;
+    }
+
 
     .status header{
         width: 600px;
@@ -808,6 +814,16 @@ body{
           display: none;
         }
 
+<<<<<<< HEAD
+=======
+        figure.logo-CO{
+          position: relative;
+          left: 140px;
+          top: 40px;
+        }
+
+
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
     }
 /*-----  End of media queries screen 481px to 767px  ------*/
 
@@ -1012,8 +1028,15 @@ body{
         position: static;
       }
 
+<<<<<<< HEAD
       .hideTextPhone{
         display: none;
+=======
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
       }
 
     }
@@ -1048,7 +1071,15 @@ body{
         line-height: 28px;
       }
 
+<<<<<<< HEAD
     }
+=======
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
+      }
+>>>>>>> 696c910481c3a46ae741617df5e887deb171d52d
 
 
 /*-----  End of media queries screen 359px to 374px  ------*/

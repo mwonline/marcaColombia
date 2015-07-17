@@ -187,16 +187,28 @@
   // imagedestroy($image);
 
   // Establecer los márgenes para la estampa y obtener el alto/ancho de la imagen de la estampa
-  $margen_dcho = 10;
-  $margen_inf = 10;
-  // $sx = imagesx($estampa);
-  // $sy = imagesy($estampa);
+  // $margen_dcho = 10;
+  // $margen_inf = 10;
+  // // $sx = imagesx($estampa);
+  // // $sy = imagesy($estampa);
+
+  // Agregando corazon
   $im = imagecreatefrompng('images_fb/'.$nombre_imagen.'.png');
   $estampa = imagecreatefrompng('images/heart_status.png');
   imagecopy($im, $estampa,385, 50, 0, 0, 30, 28);
   // Generate and send image to browser:
   header('Content-type: image/png');
   imagepng($im,'images_fb/'.$nombre_imagen.'.png');
+
+
+  $img = imagecreatefrompng('images_fb/'.$nombre_imagen.'.png');
+  $logo = imagecreatefrompng('images/logoCO.png');
+  imagecopy($img, $logo,700, 150, 0, 0, 39, 39);
+  // Generate and send image to browser:
+  header('Content-type: image/png');
+  imagepng($img,'images_fb/'.$nombre_imagen.'.png');
+
+
   // imagepng($im);
 
   // Destroy image in memory to free-up resources:

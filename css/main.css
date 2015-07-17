@@ -497,6 +497,12 @@ body{
       padding-bottom: 15px;
     }
 
+    figure.logo-CO{
+      position: relative;
+      left: 240px;
+      top: 40px;
+    }
+
 
     .status header{
         width: 600px;
@@ -790,6 +796,12 @@ body{
           display: none;
         }
 
+        figure.logo-CO{
+          position: relative;
+          left: 140px;
+          top: 40px;
+        }
+
 
     }
 /*-----  End of media queries screen 481px to 767px  ------*/
@@ -990,6 +1002,12 @@ body{
         position: static;
       }
 
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
+      }
+
     }
 
 /*-----  End of media queries phonescreen 320px to 480px  ------*/
@@ -1020,6 +1038,12 @@ body{
         color: rgb(206, 36, 50);
         padding-bottom: 15px;
         line-height: 28px;
+      }
+
+      figure.logo-CO{
+        position: relative;
+        left: 90px;
+        top: 30px;
       }
 
 

@@ -304,11 +304,11 @@ $(document).ready(function () {
       }
       else if( dispositivo.search(/android/) > -1 ){
         // alert('share android');
-        $('#compartir_tw').attr('href','http://twitter.com/share?text=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí:http://20dejulio.colombia.co');
+        $('#compartir_tw').attr('href','http://twitter.com/share?text=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí: http://20dejulio.colombia.co');
       }
       else{
         // alert('pc');
-        $('#compartir_tw').attr('href','https://twitter.com/?status=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí:http://20dejulio.colombia.co');
+        $('#compartir_tw').attr('href','https://twitter.com/?status=¡Yo estoy %23enunarelacionconCOlombia! Descubre si tú también lo estás, ingresando aquí: http://20dejulio.colombia.co');
       }
 
 

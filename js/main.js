@@ -381,6 +381,8 @@ $(document).ready(function () {
 
     $('#compartir_fb').on('click',function(){
 
+      rastrearFacebook();
+
     //   FB.ui({
     //     method: 'share',
     //     href: '20dejulio.colombia.co/index2.html',
@@ -401,6 +403,13 @@ $(document).ready(function () {
 
 
     });
+
+
+    $('#compartir_tw').on('click',function(){
+      rastrearTwitter();
+    });
+
+
 });
 
 function randomString(){
@@ -488,3 +497,14 @@ function ajaxInsertQuestion(infoUser){
   });
 
 }
+
+
+   function rastrearFacebook(){
+       console.log("Facebook");
+       ga('send', 'event', 'Compartir', 'Facebook','Clic');
+   }
+
+   function rastrearTwitter(){
+       console.log("Twitter");
+       ga('send', 'event', 'Compartir', 'Twitter','Clic');
+   }

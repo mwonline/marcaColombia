@@ -203,7 +203,7 @@
 
   $img = imagecreatefrompng('images_fb/'.$nombre_imagen.'.png');
   $logo = imagecreatefrompng('images/logoCO.png');
-  imagecopy($img, $logo,700, 150, 0, 0, 39, 39);
+  imagecopy($img, $logo,560, 170, 0, 0, 39, 39);
   // Generate and send image to browser:
   header('Content-type: image/png');
   imagepng($img,'images_fb/'.$nombre_imagen.'.png');
